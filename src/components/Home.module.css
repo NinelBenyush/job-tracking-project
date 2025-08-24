@@ -1,0 +1,396 @@
+/* Reset and base styles */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* Hero section styles */
+.heroSection {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* center horizontally */
+  background: #1e293b; /* dark background like Tailwind's slate-900 */
+  color: white;
+  padding: 4rem 2rem;
+  text-align: center; /* center text */
+  flex-direction: column; /* stack content */
+}
+
+.heroContent {
+  max-width: 72rem; /* similar to max-w-7xl */
+  width: 100%;
+}
+
+.heroTitle {
+  font-size: 4rem; /* similar to text-6xl */
+  font-weight: 900;
+  margin-bottom: 1rem;
+  background: linear-gradient(to right, #ffffff, #c4b5fd, #a5b4fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.1;
+}
+
+.heroSubtitle {
+  display: block;
+  font-size: 2rem; /* like text-4xl */
+  font-weight: 900;
+  margin-top: 0.5rem;
+  background: linear-gradient(to right, #818cf8, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.heroDescription {
+  font-size: 1.25rem; /* like text-xl */
+  color: #cbd5e1; /* slate-300 */
+  max-width: 48rem; /* like max-w-3xl */
+  margin: 2rem auto 0 auto;
+  line-height: 1.6;
+}
+
+.heroCard {
+  flex: 1;
+  max-width: 500px;
+  background: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: black;
+}
+
+/* Section styles */
+.section {
+  padding: 5rem 0;
+  background: #f8fafc;
+}
+
+.sectionContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.sectionHeader h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.sectionHeader h2::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: #755ee4;
+  border-radius: 2px;
+}
+
+.sectionHeader p {
+  font-size: 1.2rem;
+  color: #6b7280;
+}
+
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.stepCard {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.stepCard:hover {
+  transform: translateY(-5px);
+}
+
+.stepNumber {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  background: #3527cb;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.stepIcon {
+  font-size: 3rem;
+  margin: 1rem 0;
+}
+
+.stepCard h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #1f2937;
+}
+
+.stepCard p {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+/* About section */
+.about {
+  background: #f8fafc;
+  padding: 5rem 0;
+}
+
+.aboutContent {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  gap: 2rem;
+}
+
+.aboutGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.aboutText h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.aboutText h2::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: #755ee4;
+  border-radius: 2px;
+}
+
+.aboutText p {
+  font-size: 1.1rem;
+  color: #4b5563;
+  line-height: 1.7;
+}
+
+.aboutHighlights {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.highlightTag {
+  background: #755ee4;
+  color: white;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.aboutStats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.statItem {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.statNumber {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #755ee4;
+  margin-bottom: 0.25rem;
+}
+
+.statLabel {
+  font-size: 1rem;
+  color: #6b7280;
+}
+
+/* Contact section */
+.contactSection {
+  background: #fff;
+  padding: 5rem 0;
+  text-align: center;
+}
+
+.contactContent {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 3rem;
+  max-width: 900px;
+  margin: 3rem auto 0 auto;
+}
+
+.contactCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  flex: 1 1 200px;
+  max-width: 500px;
+}
+
+.contactIcon {
+  font-size: 2.5rem;
+}
+
+.contactDetails h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.contactValue {
+  font-size: 1.1rem;
+  color: #755ee4;
+  font-weight: 600;
+}
+
+.contactValue a {
+  color: #755ee4;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.contactValue a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .heroSection {
+    padding: 3rem 4rem;
+  }
+
+  .stepsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .aboutGrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    flex-direction: column;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+
+  .stepsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .contactContent {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sectionContainer {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroSection {
+    padding: 1.5rem 1rem;
+  }
+
+  .heroTitle {
+    font-size: 2rem;
+  }
+
+  .sectionHeader h2 {
+    font-size: 2rem;
+  }
+}
+
+/* Start section checklist */
+.startChecklist {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.checkItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.checkIcon {
+  width: 2rem;
+  height: 2rem;
+  background: #22c55e; /* green-500 */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.875rem; /* text-sm */
+  font-weight: bold;
+}
+
+.checkText {
+  color: #334155; /* slate-700 */
+  font-size: 1rem;
+}
