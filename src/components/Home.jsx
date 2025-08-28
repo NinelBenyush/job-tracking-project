@@ -2,19 +2,23 @@ import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import s from "./Home.module.css";
+import Login from "./Login";
 
 export default function Home() {
   return (
     <>
       <Header />
       <section className={s.heroSection}>
-        <div className={s.heroContent}>
+        <aside className={s.heroContent}>
           <h1 className={s.heroTitle}>Track Your Career</h1>
           <p className={s.heroSubtitle}>Like a Pro</p>
           <p className={s.heroDescription}>
             Transform your job search with intelligent tracking, automated
             follow-ups, and data-driven insights that land you the perfect role.
           </p>
+        </aside>
+        <div className={s.heroLogin}>
+          <Login />
         </div>
       </section>
 
@@ -126,7 +130,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       <Footer />
     </>
   );
