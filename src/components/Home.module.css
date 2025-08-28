@@ -11,17 +11,24 @@ body {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center; /* center horizontally */
+  justify-content: space-between; /* center horizontally */
   background: #1e293b; /* dark background like Tailwind's slate-900 */
   color: white;
   padding: 4rem 2rem;
   text-align: center; /* center text */
-  flex-direction: column; /* stack content */
+  flex-direction: row;
+  gap: 3rem; /* stack content */
 }
 
 .heroContent {
-  max-width: 72rem; /* similar to max-w-7xl */
-  width: 100%;
+  max-width: 48rem;
+  flex: 2; /* similar to max-w-7xl */
+}
+
+.heroLogin {
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
 .heroTitle {
