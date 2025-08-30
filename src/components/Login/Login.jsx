@@ -1,7 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import s from "./Login.module.css";
 
 export default function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:5000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
+      const data = await response.json();
+      setMessage(data.message);
+      if (data.message == "Login successful!") {
+        setUsername("");
+        setPassword("");
+      }
+    } catch (error) {
+      setMessage("Login failed. Please try again.");
+      console.error("Error:", error);
+    }
+  }
+
   return (
     <div className={s.loginCard}>
       <div className={s.loginHeader}>
@@ -17,6 +43,8 @@ export default function Login() {
               type="username"
               className={s.input}
               placeholder="Enter your username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
             <div className={s.inputIcon}>
               <svg
@@ -43,6 +71,8 @@ export default function Login() {
               type="password"
               className={s.input}
               placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <div className={s.inputIcon}>
               <svg
@@ -72,9 +102,10 @@ export default function Login() {
           </a>
         </div>
 
-        <button type="submit" className={s.loginButton}>
+        <button onClick={handleSubmit} type="submit" className={s.loginButton}>
           Sign In
         </button>
+        {message && <p>{message}</p>}
 
         <div className={s.signupLink}>
           <p>
