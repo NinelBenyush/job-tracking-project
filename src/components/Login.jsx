@@ -78,7 +78,7 @@ export default function Login() {
 
         <div className={s.signupLink}>
           <p>
-            Don't have an account? <a href="#">Sign up for free</a>
+            Don't have an account? <a href="/register">Sign up for free</a>
           </p>
         </div>
       </form>
