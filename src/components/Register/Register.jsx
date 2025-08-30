@@ -1,8 +1,34 @@
+import { useState } from "react";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import s from "./Register.module.css";
 
 export default function Register() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:5000/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, username, password }),
+      });
+      const data = await response.json();
+      setMessage(data.message);
+    } catch (error) {
+      setMessage("Registration failed. Please try again.");
+      console.error("Error:", error);
+    }
+  }
+
   return (
     <>
       <Header />
@@ -16,6 +42,8 @@ export default function Register() {
                   type="name"
                   className={s.input}
                   placeholder="Enter your name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                 />
                 <div className={s.inputIcon}>
                   <svg
@@ -41,6 +69,8 @@ export default function Register() {
                   type="email"
                   className={s.input}
                   placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
                 <div className={s.inputIcon}>
                   <svg
@@ -66,6 +96,8 @@ export default function Register() {
                   type="username"
                   className={s.input}
                   placeholder="Enter your username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                 />
                 <div className={s.inputIcon}>
                   <svg
@@ -91,6 +123,8 @@ export default function Register() {
                   type="password"
                   className={s.input}
                   placeholder="Enter your password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 <div className={s.inputIcon}>
                   <svg
@@ -120,9 +154,14 @@ export default function Register() {
               </a>
             </div>
 
-            <button type="submit" className={s.loginButton}>
+            <button
+              onClick={handleSubmit}
+              type="submit"
+              className={s.loginButton}
+            >
               Sign In
             </button>
+            {message && <p>{message}</p>}
 
             <div className={s.signupLink}>
               <p>
