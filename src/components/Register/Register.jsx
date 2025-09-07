@@ -2,6 +2,8 @@ import { useState } from "react";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import s from "./Register.module.css";
+import CircularProgress from "@mui/material/CircularProgress";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -9,9 +11,12 @@ export default function Register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
+    setLoading(true);
 
     try {
       const response = await fetch("http://localhost:5000/register", {
@@ -23,10 +28,12 @@ export default function Register() {
       });
       const data = await response.json();
       setMessage(data.message);
+      navigate("/personalPage");
     } catch (error) {
       setMessage("Registration failed. Please try again.");
       console.error("Error:", error);
     }
+    setLoading(false);
   }
 
   return (
@@ -144,15 +151,17 @@ export default function Register() {
               </div>
             </div>
 
-            <div className={s.formOptions}>
-              <label className={s.checkboxLabel}>
-                <input type="checkbox" className={s.checkbox} />
-                <span>Remember me</span>
-              </label>
-              <a href="#" className={s.forgotLink}>
-                Forgot password?
-              </a>
-            </div>
+            {loading && (
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  padding: "1rem",
+                }}
+              >
+                <CircularProgress size={30} />
+              </div>
+            )}
 
             <button
               onClick={handleSubmit}
@@ -161,7 +170,7 @@ export default function Register() {
             >
               Sign In
             </button>
-            {message && <p>{message}</p>}
+            {message && <p style={{ color: "black" }}>{message}</p>}
 
             <div className={s.signupLink}>
               <p>

@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import s from "./Login.module.css";
+import { useNavigate } from "react-router-dom";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
+    setLoading(true);
     try {
       const response = await fetch("http://localhost:5000/login", {
         method: "POST",
@@ -19,6 +24,7 @@ export default function Login() {
       const data = await response.json();
       setMessage(data.message);
       if (data.message == "Login successful!") {
+        navigate("/personalPage");
         setUsername("");
         setPassword("");
       }
@@ -26,6 +32,7 @@ export default function Login() {
       setMessage("Login failed. Please try again.");
       console.error("Error:", error);
     }
+    setLoading(false);
   }
 
   return (
@@ -101,6 +108,18 @@ export default function Login() {
             Forgot password?
           </a>
         </div>
+
+        {loading && (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              padding: "1rem",
+            }}
+          >
+            <CircularProgress size={30} />
+          </div>
+        )}
 
         <button onClick={handleSubmit} type="submit" className={s.loginButton}>
           Sign In

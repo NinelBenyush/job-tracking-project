@@ -1,10 +1,9 @@
 import s from "./Header.module.css";
 
-export default function Header() {
+export default function PersonalHeader() {
   return (
     <header className={s.bar}>
       <div className={s.container}>
-        {/* Logo with floating emoji */}
         <a href="/" className={s.logo}>
           <span
             className={s.crown}
@@ -19,20 +18,18 @@ export default function Header() {
           <span className={s.title}>Job Tracking</span>
         </a>
 
-        {/* Navigation links */}
         <nav className={s.navigation}>
           <a href="#how-it-works" className={s.navLink}>
-            How It Works
+            will be later
           </a>
           <a href="#about" className={s.navLink}>
-            About
+            something
           </a>
           <a href="#ready" className={s.navLink}>
-            Contact
+            Log-out
           </a>
         </nav>
 
-        {/* Mobile menu button */}
         <button className={s.mobileMenuBtn} aria-label="Menu">
           <span className={s.menuIcon}></span>
           <span className={s.menuIcon}></span>
